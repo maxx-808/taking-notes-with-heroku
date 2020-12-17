@@ -28,4 +28,15 @@ router.post("/notes", (req, res) => {
   res.redirect("/notes");
 });
 
+router.delete("/notes/:id", (req, res) => {
+  let noteId = req.params.id;
+
+  fs.readFile("./db/db.json", "utf8", (err, data) => {
+    if (err) throw err;
+
+    const allNotes = JSON.parse(data);
+    const newNotes = allNotes.filter((note) => note.id != noteId);
+  });
+});
+
 module.exports = router;
