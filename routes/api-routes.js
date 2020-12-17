@@ -11,14 +11,16 @@ router.get("/notes", (req, res) => {
 });
 
 router.post("/notes", (req, res) => {
-  const newNote = req.body;
-  const newId = uniqid();
+  var newNote = req.body;
+  var newId = uniqid();
 
   newNote.id = newId;
 
   fs.readFile("./db/db.json", "utf8", (err, data) => {
     if (err) throw err;
     let allsaved = JSON.parse(data);
+
+    allsaved.push(newNote);
 
     fs.writeFile("./db/db.json", JSON.stringify(allsaved), (err) => {
       if (err) return res.JSON({ err: "problem adding" });
@@ -36,6 +38,12 @@ router.delete("/notes/:id", (req, res) => {
 
     const allNotes = JSON.parse(data);
     const newNotes = allNotes.filter((note) => note.id != noteId);
+
+    fs.writeFile("./db/db.json", JSON.stringify(newNotes), (err) => {
+      if (err) throw err;
+      console.log("Note is deleted!");
+    });
+    res.redirect("/notes");
   });
 });
 
