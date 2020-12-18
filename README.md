@@ -36,6 +36,16 @@ first you must git clone from the repo and once in vs code, npm init as the node
 
 This project is to help keep track of notes you might have throughout the day, it will show the notes you saved, allow you to add more and even delete ones that are not needed!
 
+### Used
+
+<ul>
+  <li>Javascript</li>
+  <li>Node.js</li>
+  <li>express</li>
+  <li>inquirer</li>
+  <li>uniqid</li>
+</ul>
+
 <a name="contributors"></a>
 
 ## Contributors
@@ -65,6 +75,8 @@ You can contact me through:
 https://www.github.com/maxx-808
 
 ## Heroku Deployable URL:
+
+https://taking-notes-with-heroku.herokuapp.com/
 
 ## Email Address:
 
